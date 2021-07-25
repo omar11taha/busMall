@@ -4,7 +4,7 @@ let leftImgElement=document.getElementById('leftImg');
 let rightImgElement=document.getElementById('rightImg');
 let middleImgElement=document.getElementById('middlelImg');
 
-let maxAttempts=10;
+let maxAttempts=25;
 let attemptCounter=0;
 
 let leftImgIndex;
@@ -34,7 +34,7 @@ new Product('pen','imgs/pen.jpg');
 new Product('pet-sweep','imgs/pet-sweep.jpg');
 new Product('scissors','imgs/scissors.jpg');
 new Product('shark','imgs/shark.jpg');
-// new Product('sweep','imgs/sweep.jpg');
+new Product('sweep','imgs/sweep.png');
 new Product('tauntaun','imgs/tauntaun.jpg');
 new Product('unicorn','imgs/unicorn.jpg');
 new Product('water-can','imgs/water-can.jpg');
@@ -70,7 +70,7 @@ middleImgElement.addEventListener('click',handeleUserClick);
 
 function handeleUserClick(event){
     attemptCounter++;
-    if(attemptCounter<maxAttempts){
+    if(attemptCounter<=maxAttempts){
         if (event.target.id==='leftImg') {
             products[leftImgIndex].votes++;
             
