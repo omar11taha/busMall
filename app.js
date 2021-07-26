@@ -104,7 +104,7 @@ function handeleUserClick(event) {
         images.removeEventListener('click', resultes);
 
         let button = document.getElementById('button');
-        // button.hidden = false;
+        button.hidden = false;
         button.addEventListener('click', resultes);
         
 
