@@ -23,7 +23,27 @@ function Product(name, src) {
     this.shown = 0;
     products.push(this);
     namesArr.push(name);
+    // sittingItem();
 }
+function sittingItem() {
+    let stringArr=JSON.stringify(products);
+    localStorage.setItem('prodact',stringArr);
+    console.log(stringArr);
+    
+}
+// sittingItem();
+function gitProducts() {
+    let data=localStorage.getItem('prodact');
+    let parseAdd=JSON.parse(data);
+if (parseAdd !==null) {
+    products=parseAdd
+    console.log(parseAdd);
+}
+
+}
+
+
+
 new Product('bag', 'imgs/bag.jpg');
 new Product('banana', 'imgs/banana.jpg');
 new Product('bathroom', 'imgs/bathroom.jpg');
@@ -86,18 +106,18 @@ function handeleUserClick(event) {
     if (attemptCounter <= maxAttempts) {
         if (event.target.id === 'leftImg') {
             products[leftImgIndex].votes++;
-
+            renderThreeImgs();
 
         }
         else if (event.target.id === 'rightImg') {
             products[rightImgIndex].votes++;
-
+            renderThreeImgs();
         }
         else if (event.target.id === 'middlelImg') {
             products[middleImgIndex].votes++;
-
+            renderThreeImgs();
         };
-        renderThreeImgs();
+    //     gitProducts();
     }
     else {
         // console.log('fineshed');
@@ -106,26 +126,10 @@ function handeleUserClick(event) {
         let button = document.getElementById('button');
         // button.hidden = false;
         button.addEventListener('click', resultes);
-        
-
-
-       
-
-
-
-
-       
-       
-
-
-
-
-        
-
 
     }
     // button.removeEventListener('click',resultes);
-
+    
 }
 
 function resultes(event) {
@@ -137,7 +141,7 @@ function resultes(event) {
     }
     // console.log(votsArr);
     // console.log(shownArr);
-    showChart();
+    // showChart();
 
     for (let i = 0; i < products.length; i++) {
         let listElemant = document.createElement('li');
@@ -152,9 +156,12 @@ function resultes(event) {
     // rightImgElement.removeEventListener('click', resultes);
    
     button.removeEventListener('click', resultes);
-
+    
+    showChart();
+    sittingItem();
 
 }
+// gitProducts();
 
 function showChart() {
 
@@ -232,3 +239,4 @@ function showChart() {
 
 
 
+gitProducts();
